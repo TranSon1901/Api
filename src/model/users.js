@@ -5,9 +5,7 @@ const UserShema = new mongoose.Schema({
     age:{type:String},
     email:{type:String},
     adress:{type:String},
-},{
-    conllection:'users'
 })
-const users = mongoose.model('users',UserShema)
+const Users = mongoose.model('users',UserShema)
 
-export default users
+export default Users
