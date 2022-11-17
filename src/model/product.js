@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-const UserSchema = mongoose.Schema({
+const ProductSchema = mongoose.Schema({
    name: {
      type: String,
      require: true
    },
-   email: {
+   description: {
       type:String,
       require: true
    },
@@ -14,5 +14,5 @@ const UserSchema = mongoose.Schema({
      default: Date.now
    }
 })
-const Users = mongoose.model("users",UserSchema)
-export { Users}
+const product = mongoose.model("products",ProductSchema)
+export { product }

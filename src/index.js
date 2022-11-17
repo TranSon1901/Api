@@ -9,21 +9,20 @@ dotenv.config()
 const port=  process.env.PORT
 const DB_CONNET= process.env.DB_CONNET
 
-router(app)
 
-app.use(express.json())
+app
 app.use(bodyParser.json())
 
-mongoose.connect('mongodb+srv://Transon:ts0905102364@cluster0.edjqdpd.mongodb.net/?retryWrites=true&w=majority', 
-    {useNewUrlParser: true, 
-    useUnifiedTopology:true,
-    useFindAndModify: false,
-    useCreateIndex:true
-}).then(()=>{
-    console.log('Database connnet')
-}).catch(err=>{
-    console.log('not connet')
-})
+// {useNewUrlParser: true, 
+// useUnifiedTopology:true,}
+mongoose.connect("mongodb+srv://son:son@cluster0.edjqdpd.mongodb.net/?retryWrites=true&w=majority",
+{useNewUrlParser: true,
+    useUnifiedTopology:true})
+    const db= mongoose.connection
+    db.on('error',(error)=>console.log(error))
+    db.once('open',()=>console.log('conneted to database'))
+    
+router(app)
 
 app.listen(port,()=>{
     console.log(`Example app listening on port http://localhost:${port}`)
